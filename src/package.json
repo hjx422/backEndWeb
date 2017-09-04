@@ -1,0 +1,14 @@
+{
+  "name": "backStageWeb",
+  "version": "1.0.0",
+  "description": "web front-end of back stage management system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HJX",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.14.6"
+  }
+}
