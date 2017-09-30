@@ -40,5 +40,7 @@ app.use(router.routes())
 
 app.use(helloWorld)
 
-app.listen(PORT)
-console.log(`Koa started on port ${PORT}`)
+app.listen(PORT, () => {
+    console.log(`Koa started on port ${PORT}`)
+})
+
