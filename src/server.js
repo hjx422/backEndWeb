@@ -28,10 +28,17 @@ const consolePage = async (ctx, next) => {
     })
 }
 
+const helloWorld = (ctx, next) => {
+    ctx.response.body = 'hello world'
+}
+
 router.get('/', indexPage)
 router.get('/console', consolePage)
+router.get('/helloWorld', helloWorld)
 
 app.use(router.routes())
+
+app.use(helloWorld)
 
 app.listen(PORT)
 console.log(`Koa started on port ${PORT}`)
