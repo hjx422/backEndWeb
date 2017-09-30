@@ -7,6 +7,7 @@ const Views = require('koa-views')
 
 const app = new Koa()
 const router = new Router()
+const PORT = 3000
 
 app.use(Views(__dirname + '/views', {
     map: {
@@ -32,5 +33,5 @@ router.get('/console', consolePage)
 
 app.use(router.routes())
 
-app.listen(3000)
-console.log('Koa started on port 3000')
+app.listen(PORT)
+console.log(`Koa started on port ${PORT}`)
