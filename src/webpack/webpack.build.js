@@ -12,7 +12,7 @@ module.exports = [{
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: './dist'
     },
     module: {
         loaders: [
@@ -37,9 +37,9 @@ module.exports = [{
         }),
         new HtmlWebpackPlugin({
             title: 'backstage web',
-            template: path.resolve(__dirname, 'src/templates/index-template.html'),
+            template: './src/templates/index-template.html',
             inject: 'body',
-            filename:'../index.html'
+            filename:'../dist/index.html'
         }), //¸ùÄ¿Â¼
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.bundle.js')
     ]
