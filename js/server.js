@@ -1,46 +1,19 @@
-/**
- * Created by hjx on 9/7/2017.
- */
-const Koa = require('koa')
-const Router = require('koa-router')
-const Views = require('koa-views')
+'use strict'
+require('babel-register')
 
-const app = new Koa()
-const router = new Router()
-const PORT = 3000
+var webpack = require('webpack')
+var WebpackDevServer = require('webpack-dev-server')
+var config = require('./webpack/webpack.config.js')
 
-app.use(Views(__dirname + '/views', {
-    map: {
-        jade: 'jade',        // jade文件采用jade引擎进行模板解析
-        html: 'mustache'     // html文件采用mustache引擎进行模板解析
+new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    hot: true,
+    historyApiFallback: true
+}).listen(3030, '0.0.0.0', function (err, result) {
+    if (err) {
+        console.log(err)
     }
-}))
 
-const indexPage = async (ctx, next) => {
-    await ctx.render('app.html', {
-        pageTitle: '首页'
-    })
-}
 
-const consolePage = async (ctx, next) => {
-    await ctx.render('app.html', {
-        pageTitle: '控制台页面'
-    })
-}
-
-const helloWorld = (ctx, next) => {
-    ctx.response.body = 'hello world'
-}
-
-router.get('/', indexPage)
-router.get('/console', consolePage)
-router.get('/helloWorld', helloWorld)
-
-app.use(router.routes())
-
-app.use(helloWorld)
-
-app.listen(PORT, () => {
-    console.log(`Koa started on port ${PORT}`)
+    console.log('Listening at localhost:3030')
 })
-

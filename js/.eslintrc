@@ -1,0 +1,33 @@
+{
+  "extends": "rackt",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "space-before-blocks": [ 1, "always" ],
+    "array-bracket-spacing": [ 0, "always" ],
+    "object-curly-spacing": [ 0, "always" ],
+    "jsx-quotes": [ 2, "prefer-single" ],
+    "react/jsx-no-bind": 2,
+    "react/jsx-pascal-case": 2,
+    "react/jsx-no-duplicate-props": 2,
+    "react/display-name": 2,
+    "react/no-set-state": 2,
+    "react/no-string-refs": 0,
+    "react/prop-types": 2,
+    "react/no-is-mounted": 2,
+    "react/no-direct-mutation-state": 2,
+    "react/no-did-mount-set-state": 2,
+    "react/no-did-update-set-state": 2,
+    "react/jsx-boolean-value": 1,
+	"consistent-return": 2,  //0=off,1=warming,2=error
+    "no-extra-semi": 2, // 不允许多余的分号
+    "semi": [2, "never"], // 可以不使用分号的地方都不使用分号
+    "no-spaced-func": 2, // 调用函数（非声明函数）时括号与函数名之间不允许空格
+    "no-unreachable" : 2, // 不允许访问不到的语句
+    "no-unused-vars" : 0, // 未使用的变量，警告
+    "no-console": 0, // 暂不启用
+    "quotes": [2, "single", { "allowTemplateLiterals": true }], // 暂不启用
+    "indent": [2,4, {"SwitchCase":0, "VariableDeclarator": {"var":1, "let": 1, "const": 1}}]
+  }
+}

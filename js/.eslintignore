@@ -1,0 +1,3 @@
+src/constants/template.js
+src/visualEditor/*.js
+src/components/common/*/*.js

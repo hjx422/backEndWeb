@@ -1,0 +1,15 @@
+/**
+ * Created by hjx on 7/25/2017.
+ */
+// auth
+export const LOGIN_REQUEST = 'LOGIN_REQUEST'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_FAILURE = 'LOGIN_FAILURE'
+
+export const LOGOUT = 'LOGOUT'
+
+export const SWITCH_LANGUAGE = 'SWITCH_LANGUAGE'
+
+export const GET_EXAMPLES_REQUEST = 'GET_EXAMPLES_REQUEST'
+export const GET_EXAMPLES_SUCCESS = 'GET_EXAMPLES_SUCCESS'
+export const GET_EXAMPLES_FAILURE = 'GET_EXAMPLES_FAILURE'
