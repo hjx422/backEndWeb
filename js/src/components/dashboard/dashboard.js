@@ -1,0 +1,19 @@
+/**
+ * Created by Administrator on 2018/3/21.
+ */
+import React, { PropTypes } from 'react'
+
+export default class Dashboard extends React.Component {
+  static propTypes = {
+    children: PropTypes.node
+  }
+
+  render() {
+    return (
+      <div>
+        hello world
+        { this.props.children }
+      </div>
+    )
+  }
+}
