@@ -8,11 +8,11 @@ import examples from './examples.js'
 import global from './global.js'
 
 const i18nReducers = i18n({
-    examples
+  examples
 })
 
 export default combineReducers({
-    router: routerStateReducer,
-    global,
-    ...i18nReducers
+  router: routerStateReducer,
+  global,
+  ...i18nReducers
 })

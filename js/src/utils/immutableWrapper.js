@@ -14,72 +14,72 @@ import React, {PropTypes, Component, createElement} from 'react'
  * @constructor
  */
 export default function WrapComp(WrapComponent, _immutableFields = [], _concernFields = [], _shouldComponentUpdate = ()=>false) {
-    return class ImmutableWrapper extends Component {
+  return class ImmutableWrapper extends Component {
 
-        static type = 'ImmutableWrapper'
-        static propTypes = {
-            keyName: PropTypes.string
-        }
+    static type = 'ImmutableWrapper'
+    static propTypes = {
+      keyName: PropTypes.string
+    }
 
-        static displayName = 'ImmutableWrapper'
+    static displayName = 'ImmutableWrapper'
 
-        constructor(props) {
-            super(props)
-            let initState = {}
-            for(let field of _immutableFields) {
-                initState[field] = this.props[field] && this.props[field].toJS ? this.props[field].toJS() : this.props[field]
-            }
-            this.state = initState
-        }
+    constructor(props) {
+      super(props)
+      let initState = {}
+      for(let field of _immutableFields) {
+        initState[field] = this.props[field] && this.props[field].toJS ? this.props[field].toJS() : this.props[field]
+      }
+      this.state = initState
+    }
 
-        componentWillReceiveProps(nextProps) {
-            let mergeState
-            for(let field of _immutableFields) {
+    componentWillReceiveProps(nextProps) {
+      let mergeState
+      for(let field of _immutableFields) {
                 // props[field]改变时更新到state
-                if(this.props[field] != nextProps[field]) {
-                    mergeState = mergeState || {}
-                    mergeState[field] = nextProps[field] && nextProps[field].toJS ? nextProps[field].toJS() : nextProps[field]
-                }
-            }
-            if(mergeState) {
+        if(this.props[field] != nextProps[field]) {
+          mergeState = mergeState || {}
+          mergeState[field] = nextProps[field] && nextProps[field].toJS ? nextProps[field].toJS() : nextProps[field]
+        }
+      }
+      if(mergeState) {
                 this.setState(mergeState) // eslint-disable-line
-            }
-        }
+      }
+    }
 
-        shouldComponentUpdate(nextProps, nextState) {
-            if(!_concernFields || !_shouldComponentUpdate) {
+    shouldComponentUpdate(nextProps, nextState) {
+      if(!_concernFields || !_shouldComponentUpdate) {
                 // 这两者其中一个为空则不实现shouldComponentUpdate逻辑
-                return true
-            }
-            let shouldUpdate = false
-            for(let field of _concernFields) {
-                if(this.props[field] != nextProps[field]) {
-                    shouldUpdate = true
-                    break
-                }
-            }
-            shouldUpdate = shouldUpdate || this.state != nextState
+        return true
+      }
+      let shouldUpdate = false
+      for(let field of _concernFields) {
+        if(this.props[field] != nextProps[field]) {
+          shouldUpdate = true
+          break
+        }
+      }
+      shouldUpdate = shouldUpdate || this.state != nextState
                 || _shouldComponentUpdate(this.props, nextProps, this.state, nextState)
-            shouldUpdate && console.log(`shouldUpdate:`,shouldUpdate)
-            return shouldUpdate
-        }
+      shouldUpdate && console.log(`shouldUpdate:`,shouldUpdate)
+      return shouldUpdate
+    }
 
-        get() {
-            return this.refs.wrapped
-        }
+    get() {
+      return this.refs.wrapped
+    }
 
-        render() {
-            if(!this.renderCount) {
-                this.renderCount = 1
-            }else {
-                this.renderCount++
-            }
-            this.props.keyName && console.log(`--render--${this.props.keyName}:${this.renderCount}`)
-            let wrapperFields = {}
-            for(let field of _immutableFields) {
-                wrapperFields[field] = this.state[field]
-            }
-            return <WrapComponent ref='wrapped' {...this.props} {...wrapperFields}/>
-        }
+    render() {
+      if(!this.renderCount) {
+        this.renderCount = 1
+      }else {
+        this.renderCount++
+      }
+      this.props.keyName && console.log(`--render--${this.props.keyName}:${this.renderCount}`)
+      let wrapperFields = {}
+      for(let field of _immutableFields) {
+        wrapperFields[field] = this.state[field]
+      }
+      return <WrapComponent ref='wrapped' {...this.props} {...wrapperFields}/>
+    }
     }
 }

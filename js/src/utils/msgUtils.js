@@ -16,9 +16,9 @@ const TEXT = Symbol('text')
 const UNKNOWN = Symbol('unknonw')
 
 let renderRules = {
-    [URL] : urlHandler(),
-    [NEWLINE] : newlineHandler(),
-    [SPACE] : (sep) => sep.replace(/\s/g, '&nbsp;')
+  [URL] : urlHandler(),
+  [NEWLINE] : newlineHandler(),
+  [SPACE] : (sep) => sep.replace(/\s/g, '&nbsp;')
 }
 
 // source: https://gist.github.com/dperini/729294
@@ -64,26 +64,26 @@ let urlRegExp = new RegExp(
 
 // main rules
 const url = {
-    label: URL,
+  label: URL,
     //pattern: /^\s*https?:\/\/[^ <>]{4,512}/ //最多 512 个
-    pattern: urlRegExp
+  pattern: urlRegExp
 }
 const special    = {
-    label: SPECIAL,
-    pattern: /^[-$\\@#\[\]\(\)\{\};<>\/]/
+  label: SPECIAL,
+  pattern: /^[-$\\@#\[\]\(\)\{\};<>\/]/
 }
 
 const nonspecial = {
-    label: TEXT,
-    pattern: /^[^-$\\@#\[\]\(\)\{\};<>\/ \n\r]+/
+  label: TEXT,
+  pattern: /^[^-$\\@#\[\]\(\)\{\};<>\/ \n\r]+/
 }
 const sep = {
-    label: SPACE,
-    pattern: /^[ \t]+/
+  label: SPACE,
+  pattern: /^[ \t]+/
 }
 const newline = {
-    label: NEWLINE,
-    pattern: /^(\r\n|\r|\n)+/
+  label: NEWLINE,
+  pattern: /^(\r\n|\r|\n)+/
 }
 // subrules
 const escape = /^[`'"\\<>&]/  // nonspecial 跟 special 里都有要 escape 的
@@ -105,28 +105,28 @@ function tokenize(text, rules = parseOrder) {
         // 中文字符串
         // 内容长度 140
         // escape
-    let lines = text.split(/(\r\n|\n)/)
-    let data = []
-    for(let idx in lines) {
+  let lines = text.split(/(\r\n|\n)/)
+  let data = []
+  for(let idx in lines) {
         //if(idx > 0) data.push(['newline', '']); // preserve newline
-        for (let i = 0; i < lines[idx].length;) {
-            let chunk = lines[idx].slice(i)
-            let match = rules.some(item => {
-                if(item.pattern.test(chunk)) {
-                    let matchObject = chunk.match(item.pattern)
-                    i += matchObject[0].length
-                    data.push([ item.label, matchObject[0] ])
-                    return true
-                }
-                return false
-            })
-            if(!match) {
-                data.push([ UNKNOWN, chunk[i] ])
-                i++
-            }
+    for (let i = 0; i < lines[idx].length;) {
+      let chunk = lines[idx].slice(i)
+      let match = rules.some(item => {
+        if(item.pattern.test(chunk)) {
+          let matchObject = chunk.match(item.pattern)
+          i += matchObject[0].length
+          data.push([ item.label, matchObject[0] ])
+          return true
         }
+        return false
+      })
+      if(!match) {
+        data.push([ UNKNOWN, chunk[i] ])
+        i++
+      }
     }
-    return data
+  }
+  return data
 }
 
 /**
@@ -134,78 +134,78 @@ function tokenize(text, rules = parseOrder) {
  * @param text
  */
 function textLength(text) {
-    let count = 0.0
-    for (let i in text) {
+  let count = 0.0
+  for (let i in text) {
         //if(alphanumpunc.test(text[i])) {
         //    count += 0.5
         //}else {
-        count += 1
+    count += 1
         //}
-    }
-    return count
+  }
+  return count
 }
 
 /**
  * 英文字符1个，中文字符1个
  */
 function msgLength(msgText) {
-    let tokens = tokenize(msgText)
-    let count = 0
-    for (let i in tokens) {
-        let item = tokens[i]
-        let [ label, text ] = item
-        switch (label) {
-        case URL:
-            count += 4
-            break
-        case SPACE:
-            count += text.length * 0.5
+  let tokens = tokenize(msgText)
+  let count = 0
+  for (let i in tokens) {
+    let item = tokens[i]
+    let [ label, text ] = item
+    switch (label) {
+    case URL:
+      count += 4
+      break
+    case SPACE:
+      count += text.length * 0.5
                 // count += 1; // 1 个或多个空格算 1
-            break
-        default:
-            count += textLength(text)
-            break
-        }
+      break
+    default:
+      count += textLength(text)
+      break
     }
-    return count
+  }
+  return count
 }
 
 function difTextLength(text) {
-    let count = 0.0
-    for (let i in text) {
-        if(alphanumpunc.test(text[i])) {
-            count += 1
-        }else {
-            count += 2
-        }
+  let count = 0.0
+  for (let i in text) {
+    if(alphanumpunc.test(text[i])) {
+      count += 1
+    }else {
+      count += 2
     }
-    return count
+  }
+  return count
 }
 
 /**
  * 英文字符1个，中文字符2个，空格1个
  */
 function difMsgLength(msgText) {
-    let tokens = tokenize(msgText)
-    let count = 0
-    for (let i in tokens) {
-        let item = tokens[i]
-        let [ label, text ] = item
-        switch (label) {
-        case SPACE:
-            count += text.length * 1
+  let tokens = tokenize(msgText)
+  let count = 0
+  for (let i in tokens) {
+    let item = tokens[i]
+    let [ label, text ] = item
+    switch (label) {
+    case SPACE:
+      count += text.length * 1
             // count += 1; // 1 个或多个空格算 1
-            break
-        default:
-            count += difTextLength(text)
-            break
-        }
+      break
+    default:
+      count += difTextLength(text)
+      break
     }
-    return count
+  }
+  return count
 }
 
 function _escape(str) {
-    return str
+  return str
         .replace(/&/g, '&amp;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#x27;')
@@ -216,7 +216,7 @@ function _escape(str) {
 }
 
 function _unescape(str) {
-    return str
+  return str
         .replace(/&#96;/ig, '`')
         .replace(/&#x2F;/ig, '/')
         .replace(/&gt;/ig, '>')
@@ -230,23 +230,23 @@ function _unescape(str) {
  * 在发送到服务端之前清理 & <> " ' ` / 等字符
  */
 function msgEscape(str) {
-    let tokens = tokenize(str)
-    let data = []
-    tokens.forEach((item, idx) => {
-        let [ label, token ] = item
-        if(label == TEXT || label == SPECIAL) {
-            data.push(_escape(token))
-        }else if(label == NEWLINE) {
-            data.push(token)
-        }else {
-            data.push(token)
-        }
-    })
-    return data.join('')
+  let tokens = tokenize(str)
+  let data = []
+  tokens.forEach((item, idx) => {
+    let [ label, token ] = item
+    if(label == TEXT || label == SPECIAL) {
+      data.push(_escape(token))
+    }else if(label == NEWLINE) {
+      data.push(token)
+    }else {
+      data.push(token)
+    }
+  })
+  return data.join('')
 }
 
 function msgUnescape(str) {
-    return _unescape(str)
+  return _unescape(str)
 }
 
 /**
@@ -256,36 +256,36 @@ function msgUnescape(str) {
  * @returns {*}
  */
 function idTemplate(options) {
-    return options.text
+  return options.text
 }
 
 function hrefTemplate(options)  {
-    return `<a class="${options.class}" href="${options.href}">${options.text}</a>`
+  return `<a class="${options.class}" href="${options.href}">${options.text}</a>`
 }
 
 function userHandler(template = hrefTemplate) {
-    return userStr => {
-        let userId = userStr.replace(/^<M (\d+)>(@.*)<\/M>/i, '$1')
-        let userTag = userStr.replace(/^<M (\d+)>(@.*)<\/M>/i, '$2')
+  return userStr => {
+    let userId = userStr.replace(/^<M (\d+)>(@.*)<\/M>/i, '$1')
+    let userTag = userStr.replace(/^<M (\d+)>(@.*)<\/M>/i, '$2')
         // TODO : supporting template
-        return template({ class:'wb-at', href:`#/users/${userId}`, text: userTag })
-    }
+    return template({ class:'wb-at', href:`#/users/${userId}`, text: userTag })
+  }
 }
 
 function urlHandler(template = hrefTemplate) {
-    return text =>
+  return text =>
         template({ class:'wb-url', href:text, text: '链接' })
 }
 
 function truncateUrl(url, length=20) {
-    if(url.length > length) {
-        return url.slice(0,length) + '...'
-    }
-    return url
+  if(url.length > length) {
+    return url.slice(0,length) + '...'
+  }
+  return url
 }
 
 function newlineHandler(template=idTemplate) {
-    return newlines =>
+  return newlines =>
         template({ text: newlines.replace(/(\r\n|\r|\n)/g, '<br />') })
 }
 
@@ -296,18 +296,18 @@ function newlineHandler(template=idTemplate) {
  * 支持options 传模板
  */
 function renderHtml(str, options={}) {
-    let tokens = tokenize(str)
-    let data = []
+  let tokens = tokenize(str)
+  let data = []
 
-    tokens.forEach((item, idx) => {
-        let [ label, token ] = item
-        if (renderRules[label]) {
-            data.push(renderRules[label](token))
-        }else {
-            data.push(token)
-        }
-    })
-    return data.join('')
+  tokens.forEach((item, idx) => {
+    let [ label, token ] = item
+    if (renderRules[label]) {
+      data.push(renderRules[label](token))
+    }else {
+      data.push(token)
+    }
+  })
+  return data.join('')
 }
 
 /**
@@ -315,45 +315,45 @@ function renderHtml(str, options={}) {
  */
 function truncateMsg(text, toLength=140) {
 
-    let tokens = tokenize(text)
-    let count = 0
-    let data = []
-    let i
-    let testcount
-    for (i in tokens) {
-        let [ label, token ] = tokens[i]
-        switch (label) {
-        case URL:
-            count += 4
-            break
-        case SPACE:
-            count += token.length * 0.5
+  let tokens = tokenize(text)
+  let count = 0
+  let data = []
+  let i
+  let testcount
+  for (i in tokens) {
+    let [ label, token ] = tokens[i]
+    switch (label) {
+    case URL:
+      count += 4
+      break
+    case SPACE:
+      count += token.length * 0.5
                 // count += 1; // 1 个或多个空格算 1
-            break
-        default:
-            testcount = count + textLength(token)
-            if (testcount > toLength) {
-                let keepidx = 0
-                token.split('').some((char,idx)=>{
-                    if(count + textLength(token.slice(0, idx)) <= toLength) {
-                        keepidx = idx
-                        return false
-                    }
-                    return true
-                })
-                data.push(token.slice(0, keepidx))
-            }
-            count = testcount
-            break
-        }
-        if (count > toLength) {
-            break
-        }else {
-            data.push(token)
-        }
+      break
+    default:
+      testcount = count + textLength(token)
+      if (testcount > toLength) {
+        let keepidx = 0
+        token.split('').some((char,idx)=>{
+          if(count + textLength(token.slice(0, idx)) <= toLength) {
+            keepidx = idx
+            return false
+          }
+          return true
+        })
+        data.push(token.slice(0, keepidx))
+      }
+      count = testcount
+      break
     }
+    if (count > toLength) {
+      break
+    }else {
+      data.push(token)
+    }
+  }
 
-    return data.join('')
+  return data.join('')
 }
 
 /**
@@ -361,51 +361,51 @@ function truncateMsg(text, toLength=140) {
  */
 function difTruncateMsg(text, toLength=140) {
 
-    let tokens = tokenize(text)
-    let count = 0
-    let data = []
-    let i
-    let testcount
-    for (i in tokens) {
-        let [ label, token ] = tokens[i]
-        switch (label) {
-        case SPACE:
-            count += token.length * 1
+  let tokens = tokenize(text)
+  let count = 0
+  let data = []
+  let i
+  let testcount
+  for (i in tokens) {
+    let [ label, token ] = tokens[i]
+    switch (label) {
+    case SPACE:
+      count += token.length * 1
             // count += 1; // 1 个或多个空格算 1
-            break
-        default:
-            testcount = count + difTextLength(token)
-            if (testcount > toLength) {
-                let keepidx = 0
-                token.split('').some((char,idx)=>{
-                    if(count + difTextLength(token.slice(0, idx)) <= toLength) {
-                        keepidx = idx
-                        return false
-                    }
-                    return true
-                })
-                data.push(token.slice(0, keepidx))
-            }
-            count = testcount
-            break
-        }
-        if (count > toLength) {
-            break
-        }else {
-            data.push(token)
-        }
+      break
+    default:
+      testcount = count + difTextLength(token)
+      if (testcount > toLength) {
+        let keepidx = 0
+        token.split('').some((char,idx)=>{
+          if(count + difTextLength(token.slice(0, idx)) <= toLength) {
+            keepidx = idx
+            return false
+          }
+          return true
+        })
+        data.push(token.slice(0, keepidx))
+      }
+      count = testcount
+      break
     }
+    if (count > toLength) {
+      break
+    }else {
+      data.push(token)
+    }
+  }
 
-    return data.join('')
+  return data.join('')
 }
 
 const symbols = {
-    URL,
-    NEWLINE,
-    SPACE,
-    SPECIAL,
-    TEXT,
-    UNKNOWN
+  URL,
+  NEWLINE,
+  SPACE,
+  SPECIAL,
+  TEXT,
+  UNKNOWN
 }
 
 export {

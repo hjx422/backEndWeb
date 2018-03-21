@@ -4,7 +4,7 @@
 import * as actionTypes from './actionTypes.js'
 
 export function getExamples() {
-    return {
-        type: actionTypes.GET_EXAMPLES_REQUEST
-    }
+  return {
+    type: actionTypes.GET_EXAMPLES_REQUEST
+  }
 }

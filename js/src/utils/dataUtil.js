@@ -22,16 +22,16 @@ export default {
      * 判断内容是否改变
      * @returns {boolean}
      */
-    isDirty(_props) {
-        if(_props.fetching) return false
-        let snapshot = JSON.stringify(this.dataSnapshot())
-        if(snapshot && this.snapshot) {
-            return snapshot != this.snapshot
-        }
-        return false
+  isDirty(_props) {
+    if(_props.fetching) return false
+    let snapshot = JSON.stringify(this.dataSnapshot())
+    if(snapshot && this.snapshot) {
+      return snapshot != this.snapshot
+    }
+    return false
 
 
-    },
+  },
 
     /**
      * 更新数据快照
@@ -40,46 +40,46 @@ export default {
      * @param useCustomSnapshot
      * @param snapshot
      */
-    updateDataSnapshot(useCustomSnapshot, snapshot) {
+  updateDataSnapshot(useCustomSnapshot, snapshot) {
 
-        if(useCustomSnapshot) {
-            this.snapshot = JSON.stringify(snapshot)
-        }else {
-            this.snapshot = JSON.stringify(this.dataSnapshot())
-        }
-    },
+    if(useCustomSnapshot) {
+      this.snapshot = JSON.stringify(snapshot)
+    }else {
+      this.snapshot = JSON.stringify(this.dataSnapshot())
+    }
+  },
     /**
      * 获取数据完成后,记录快照
      * @param nextProps
      * @param addFirstSnapMethod 第一步快照初始值,不传则默认调用HistoryUtil.addSnap({})
      */
-    onComponentWillReceiveProps(nextProps,addFirstSnapMethod) {
-        if(this.props.fetching && !nextProps.fetching) {
+  onComponentWillReceiveProps(nextProps,addFirstSnapMethod) {
+    if(this.props.fetching && !nextProps.fetching) {
             // 因为dataSnapshot是根据props生成的,所以需要做个延迟.等待被nextProps覆盖.
-            setTimeout((()=> {
-                this.updateDataSnapshot()
+      setTimeout((()=> {
+        this.updateDataSnapshot()
                 //撤销重做快照初始值
-                if(addFirstSnapMethod) {
-                    addFirstSnapMethod()
-                }else {
-                    HistoryUtil.addSnap({})
-                }
-            }).bind(this), 0)
+        if(addFirstSnapMethod) {
+          addFirstSnapMethod()
+        }else {
+          HistoryUtil.addSnap({})
         }
-    },
-
-    onComponentDidMount(addFirstSnapMethod) {
-        if(!this.props.fetching) {
-            // 因为dataSnapshot是根据props生成的,所以需要做个延迟.等待被nextProps覆盖.
-            setTimeout((()=> {
-                this.updateDataSnapshot()
-                //撤销重做快照初始值
-                if(addFirstSnapMethod) {
-                    addFirstSnapMethod()
-                }else {
-                    HistoryUtil.addSnap({})
-                }
-            }).bind(this), 0)
-        }
+      }).bind(this), 0)
     }
+  },
+
+  onComponentDidMount(addFirstSnapMethod) {
+    if(!this.props.fetching) {
+            // 因为dataSnapshot是根据props生成的,所以需要做个延迟.等待被nextProps覆盖.
+      setTimeout((()=> {
+        this.updateDataSnapshot()
+                //撤销重做快照初始值
+        if(addFirstSnapMethod) {
+          addFirstSnapMethod()
+        }else {
+          HistoryUtil.addSnap({})
+        }
+      }).bind(this), 0)
+    }
+  }
 }

@@ -6,9 +6,9 @@ import Intl from './i18n/intl'
 import getRoutes from './routes'
 
 export default class Root extends Component {
-    render() {
-        const { store } = this.props
-        return (
+  render() {
+    const { store } = this.props
+    return (
             <Provider store={store}>
                 <Intl>
                     <div>
@@ -19,10 +19,10 @@ export default class Root extends Component {
                     </div>
                 </Intl>
             </Provider>
-        )
-    }
+    )
+  }
 }
 
 Root.propTypes = {
-    store: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 }

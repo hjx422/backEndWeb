@@ -8,8 +8,8 @@ import * as authSaga from './authSaga'
 import * as exampleSaga from './exampleSaga.js'
 
 export default function* rootSaga() {
-    yield takeEvery(actionTypes.LOGIN_REQUEST, mapPayload(authSaga.login))
-    yield takeEvery(actionTypes.GET_EXAMPLES_REQUEST, mapPayload(exampleSaga.getExamples))
+  yield takeEvery(actionTypes.LOGIN_REQUEST, mapPayload(authSaga.login))
+  yield takeEvery(actionTypes.GET_EXAMPLES_REQUEST, mapPayload(exampleSaga.getExamples))
 }
 
 /**
@@ -19,7 +19,7 @@ export default function* rootSaga() {
  * @returns {mapFunc}
  */
 function mapPayload(func) {
-    return function* mapFunc(action) {
-        return yield func.call(this, action.payload)
-    }
+  return function* mapFunc(action) {
+    return yield func.call(this, action.payload)
+  }
 }

@@ -4,14 +4,14 @@
 import Immutable from 'immutable'
 
 export function get(data, key) {
-    return !data ? data :
+  return !data ? data :
         data.get ? data.get(key) : data[key]
 }
 
 
 export function listSize(list) {
-    if(!list) return 0
-    return Immutable.List.isList(list) ? list.size :
+  if(!list) return 0
+  return Immutable.List.isList(list) ? list.size :
         Array.isArray(list) ? list.length: 0
 }
 
@@ -33,23 +33,23 @@ export function listSize(list) {
  * @returns {*}
  */
 export function updateKeyPathData(state, keyPath, data, merge = false, deepMerge = true) {
-    let newState
-    let keys = keyPath.split('.').filter((str)=>str != '')
-    if (merge) {
-        newState = state.updateIn(keys, (value) => {
+  let newState
+  let keys = keyPath.split('.').filter((str)=>str != '')
+  if (merge) {
+    newState = state.updateIn(keys, (value) => {
             // console.log('value:',JSON.stringify(value))
             // value若存在并且是immutable对象,则merge,否则直接设值
-            if (value && value.mergeDeep) {
-                return deepMerge ? value.mergeDeep(data) : value.merge(data)
-            }
-            return Immutable.fromJS(data)
-        })
-    } else {
+      if (value && value.mergeDeep) {
+        return deepMerge ? value.mergeDeep(data) : value.merge(data)
+      }
+      return Immutable.fromJS(data)
+    })
+  } else {
         // 直接设值
-        newState = state.setIn(keys, Immutable.fromJS(data))
-    }
+    newState = state.setIn(keys, Immutable.fromJS(data))
+  }
     // console.log('newState:', JSON.stringify((newState)))
-    return newState
+  return newState
 }
 
 
@@ -61,16 +61,16 @@ export function updateKeyPathData(state, keyPath, data, merge = false, deepMerge
  * @returns {*}
  */
 export function getIn(obj, keyPath) {
-    if (!obj) return obj
-    let keys = keyPath.split('.').filter((str)=>str != '')
-    if (obj.getIn) {
-        return obj.getIn(keys)
-    } else {
-        let finalObj = obj
-        for (let k of keys) {
-            finalObj = finalObj[k]
-            if (!finalObj) return undefined
-        }
-        return finalObj
+  if (!obj) return obj
+  let keys = keyPath.split('.').filter((str)=>str != '')
+  if (obj.getIn) {
+    return obj.getIn(keys)
+  } else {
+    let finalObj = obj
+    for (let k of keys) {
+      finalObj = finalObj[k]
+      if (!finalObj) return undefined
     }
+    return finalObj
+  }
 }

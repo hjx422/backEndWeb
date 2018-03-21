@@ -7,28 +7,28 @@ import * as actionTypes from '../actions/actionTypes.js'
 import * as lang from '../constants/lang.js'
 
 export function* getExamples() {
-    try {
-        let response = yield new Promise((resolve, reject) => {
-            resolve({
-                zh: ['例子1', '例子2', '例子3', '例子4', '例子5'],
-                en: ['example1', 'example2', 'example3', 'example4', 'example5']
-            })
-        })
-        yield put({
-            type: actionTypes.GET_EXAMPLES_SUCCESS,
-            response: response.zh,
-            meta: {
-                lang: lang.ZH
-            }
-        })
-        yield put({
-            type: actionTypes.GET_EXAMPLES_SUCCESS,
-            response: response.en,
-            meta: {
-                lang: lang.EN
-            }
-        })
-    } catch (error) {
-        yield put({ type: actionTypes.GET_EXAMPLES_FAILURE, error })
-    }
+  try {
+    let response = yield new Promise((resolve, reject) => {
+      resolve({
+        zh: ['例子1', '例子2', '例子3', '例子4', '例子5'],
+        en: ['example1', 'example2', 'example3', 'example4', 'example5']
+      })
+    })
+    yield put({
+      type: actionTypes.GET_EXAMPLES_SUCCESS,
+      response: response.zh,
+      meta: {
+        lang: lang.ZH
+      }
+    })
+    yield put({
+      type: actionTypes.GET_EXAMPLES_SUCCESS,
+      response: response.en,
+      meta: {
+        lang: lang.EN
+      }
+    })
+  } catch (error) {
+    yield put({ type: actionTypes.GET_EXAMPLES_FAILURE, error })
+  }
 }

@@ -7,17 +7,17 @@ import * as i18 from '../actions/i18n.js'
 import * as example from '../actions/example.js'
 
 function mapStateToProps(state) {
-    const curLang = state.global.curLang
-    return {
-        examples: state[curLang].examples
-    }
+  const curLang = state.global.curLang
+  return {
+    examples: state[curLang].examples
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        switchLanguage: () => dispatch(i18.switchLanguage()),
-        getExamples: () => dispatch(example.getExamples())
-    }
+  return {
+    switchLanguage: () => dispatch(i18.switchLanguage()),
+    getExamples: () => dispatch(example.getExamples())
+  }
 }
 
 export default connect(

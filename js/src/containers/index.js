@@ -2,14 +2,14 @@ import { Provider, connect } from 'react-redux'
 import Index from '../components/index.js'
 
 function mapStateToProps(state) {
-    return {
-        isLoading: false
-    }
+  return {
+    isLoading: false
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-    }
+  return {
+  }
 }
 
 export default connect(
