@@ -28,6 +28,6 @@
     "no-unused-vars" : 0, // 未使用的变量，警告
     "no-console": 0, // 暂不启用
     "quotes": [2, "single", { "allowTemplateLiterals": true }], // 暂不启用
-    "indent": [2,4, {"SwitchCase":0, "VariableDeclarator": {"var":1, "let": 1, "const": 1}}]
+    "indent": [2,2, {"SwitchCase":0, "VariableDeclarator": {"var":1, "let": 1, "const": 1}}]
   }
 }

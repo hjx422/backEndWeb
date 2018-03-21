@@ -15,6 +15,7 @@
     "lang_rebuild_all": "npm run lang_combine && npm run lang_gen_xlsx && npm run lang_gen_autotranslate_xlsx && npm run lang_read_xlsx temp",
     "lang_read_xlsx": "babel-node ./script/lang/readXlsx2Json.js",
     "lint": "eslint src ",
+    "fix": "eslint --fix src ",
     "test": "babel-node ./node_modules/karma/bin/karma start ./karma.conf.js ",
     "test:debug": "babel-node ./node_modules/karma/bin/karma start ./karma.conf.js --no-single-run ",
     "test:mocha": "mocha --compilers js:babel-core/register -r mock-local-storage --recursive",
