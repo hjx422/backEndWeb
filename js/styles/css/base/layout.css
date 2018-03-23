@@ -1,0 +1,180 @@
+@import "../themes/default.css";
+
+/**page**/
+:global(.page-all-wrap) {
+    position: relative;
+    height: 100%;
+}
+:global(.page-all-wrap .page-all-main) {
+    position: relative;
+    height: calc(100% - 68px);
+    overflow: hidden;
+    border-radius: 0 0 5px 0;
+}
+:global(.page-all-wrap .page-all-main-ct) {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    min-width: 900px;
+    height: calc(100% - 51px);
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+:global(.page-all-wrap .page-all-right) {
+    /*float: right;*/
+    position: relative;
+    /*left: 175px;*/
+    width: calc(100% - 175px);
+    height:100%;
+    background: $container-background;
+    left: 175px;
+    transition: all 0.3s cubic-bezier(.09,1.17,.85,.97);
+    border-radius: $radius5 0 0 0;
+    box-shadow: 3px 0 8px rgba(0,0,0,0.1), -3px 0 8px rgba(0,0,0,0.1);
+}
+.page-wrap {
+    background: $main-background;
+    box-shadow: $shadow-main-area;
+}
+.layer-page-wrap {
+    background: $container-background;
+}
+/**form**/
+.display-table {
+    display: table;
+    width: 100%;
+    font-size: $font16;
+}
+
+.form-item-common-a {
+    composes: display-table;
+    padding: 20px 40px;
+    cursor: pointer;
+}
+
+.form-item-active .form-label-item label:before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: -40px;
+    top: 10px;
+    width: 7px;
+    height: 25px;
+    background: $orange-b;
+}
+
+.group-form-item-active .form-label-item label:before {
+    width: 0!important;
+}
+
+.form-label-item p {
+    font-size: $font14;
+    color: $tips-grey;
+}
+
+.group-form-item-active .form-label-item p, .form-item-active .form-label-item p {
+    font-size: $font14;
+    color: $tips-orange;
+}
+
+.form-label-item {
+    position: relative;
+    display: table-cell;
+    width: 12%;
+    vertical-align: top;
+    padding: 10px 20px 10px 0;
+    color: $grey-b;
+}
+
+.form-edit-item-common {
+    display: table-cell;
+    padding: 10px 20px;
+    color: $grey-a;
+    border-radius: $radius5;
+}
+
+.form-edit-item {
+    border-radius: $radius5;
+    background: $form-item-bg;
+    box-shadow: $shadow-form-item;
+}
+
+.form-edit-item-group {
+    padding: 0;
+}
+.form-edit-item-common .group-form-item-active {
+    margin: 0;
+}
+.form-edit-item .group-form-item-active {
+    margin: 10px 0;
+}
+
+.form-un-edit-item:hover .form-edit-item-common {
+    background: $form-item-bg-hover;
+    color: #333;
+}
+
+.form-addition-box {
+    margin-top: 5px;
+    padding-top: 10px;
+    border-top: 1px dashed $border-color-split-light;
+    font-size: $font14;
+}
+
+.form-addition-box-item {
+    margin: 8px 0;
+}
+
+:global(.form-items-box) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    color: $gray-3;
+}
+
+:global(.form-items-box .items-l) {
+    display: inline-block;
+    padding: 3px 0;
+    min-width: 65px;
+}
+
+:global(.form-series-items-box .items-r) {
+    padding-left: 35px;
+}
+
+:global(.form-items-box .items-r) {
+    flex: 1;
+    padding-left: 0px;
+}
+
+:global(.form-items-tips .items-r) {
+    padding-top: 3px;
+}
+
+.tags > span {
+    display: inline-block;
+    padding: 3px 10px;
+    margin: 0 3px 5px;
+    transition: color 200ms ease-in;
+    border-radius: $radius50;
+    color: $gray-3;
+    cursor: pointer;
+}
+
+.tags label {
+    cursor: pointer;
+    min-width: 31px;
+    display: inline-block;
+    text-align: center;
+}
+
+.tags > span:hover {
+    background: $tags-hover-bg-color;
+    color: $tags-hover-color;
+}
+
+.tags > span.tags-active {
+    background: $tags-active-bg-color;
+    color: $tags-active-color;
+}

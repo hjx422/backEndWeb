@@ -1,0 +1,32 @@
+@import "../themes/default.css";
+
+/**form**/
+.form-label-l {
+    color: $grey-b;
+}
+
+.form-label-r {
+    color: $grey-c;
+}
+.form-count-value {
+    color: $tips-blue;
+}
+.form-tip-value {
+    color: $tips-pink;
+}
+/*UI kit 主色调*/
+.major-color-blue {
+    color: $blue;
+}
+.secondary-color {
+    color: $orange;
+}
+.font-gray-3 {
+    color: $gray-3;
+}
+.font-gray-6 {
+    color: $gray-6;
+}
+.font-gray-9 {
+    color: $gray-9;
+}

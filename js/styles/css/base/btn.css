@@ -1,0 +1,138 @@
+@import "../themes/default.css";
+@value icon: 'styles/common/css/base/icon.css';
+
+/*按钮*/
+.btn-common {
+    color: $btn-primary-text;
+    border-radius: $radius50;
+    cursor: pointer;
+    min-width: 215px;
+    height: 56px;
+    line-height: 0;
+    font-size: $btn-font-normal-size;
+    background: $btn-primary-bg;
+    box-shadow: $shadow-button;
+    transition: 0.3s $ease-in-out all;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+}
+
+.btn-shadow-light {
+
+}
+
+.btn-primary {
+    composes: btn-common;
+    background: $btn-primary-bg;
+}
+.btn-primary:hover {
+    background: $btn-primary-hover-bg;
+    box-shadow: $shadow-button-hover;
+}
+.btn-primary:active {
+    background: $btn-primary-active-bg;
+    color: $btn-primary-active-color;
+    box-shadow: none;
+}
+
+.btn-grey {
+    composes: btn-common;
+    background: $btn-cancel-bg;
+}
+.btn-grey:hover {
+    background: $btn-cancel-hover-bg;
+    box-shadow: $shadow-button-hover;
+}
+
+.btn-disabled {
+    composes: btn-common;
+    background: $btn-disabled-bg;
+    color: $btn-disabled-color;
+    box-shadow: none;
+}
+.btn-disabled:hover {
+    background: $btn-disabled-bg;
+    color: $btn-disabled-color;
+}
+
+.btn-default {
+    background-color: transparent;
+    color: $btn-primary-bg;
+    transition: ease-in-out 300ms all;
+}
+
+.btn-default i {
+    color: $btn-primary-bg;
+}
+
+.btn-default:hover {
+    text-shadow: $shadow-table-text-hover;
+}
+
+.btn-default:active {
+    opacity: 0.5;
+}
+
+.btn-default i {
+    position: relative;
+    z-index: 1;
+}
+
+/*.btn-default i:after {*/
+    /*z-index: 0;*/
+    /*content: "";*/
+    /*width: 1px;*/
+    /*height: 2px;*/
+    /*position: absolute;*/
+    /*bottom: 5px;*/
+    /*left: 10px;*/
+    /*transition: ease-in-out 300ms all;*/
+/*}*/
+
+/*.btn-default:hover i:after {*/
+    /*background: $shadow-table-icon-color;*/
+    /*box-shadow: $shadow-table-icon-hover;*/
+/*}*/
+
+.btn-upload {
+    position: relative;
+    composes: btn-primary;
+}
+
+.btn-middle {
+    box-shadow: none;
+}
+
+.btn-middle:hover {
+    box-shadow: $shadow-button-deep;
+}
+/*picture/file add*/
+.btn-file-wrap {
+    position: relative;
+    display: inline-block;
+}
+.btn-file-wrap input {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 30px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.add-btn {
+    composes: iconfont from icon;
+    composes: icon-create-new from icon;
+    margin-right: 5px;
+}
+.add-btn-label {
+    color: $btn-default-common-text;
+}
+/*add tags*/
+.btn-item-add-primary {
+    composes: btn-common;
+    background: $btn-primary-bg;
+    width: auto;
+    height: auto;
+}

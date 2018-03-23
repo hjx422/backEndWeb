@@ -1,0 +1,84 @@
+@import "../themes/default.css";
+
+$th-height: 70px;
+$td-height: 70px;
+$cell-padding-left: 60px;
+
+.table-wrap {
+    /*background: $table-box-bg-color;*/
+}
+
+.table-box {
+    width: 100%;
+    font-size: $font16;
+    /*background: $table-box-bg-color;*/
+}
+
+.table-box tr {
+    background: $table-line-bg-commom-color;
+    text-align: left;
+}
+
+.table-box thead tr {
+    background: rgba(83, 110, 136, .05);
+    border-bottom: 2px solid #c2cad2;
+}
+
+.table-box tbody {
+    height: calc(100% - 66px);
+    overflow-y: auto;
+}
+
+.table-box tbody tr {
+    /*border-bottom: 2px solid $border-color-split-light;*/
+    cursor: pointer;
+    transition: 0.3s background $ease-in-out;
+}
+
+.table-box tbody tr:nth-child(even) {
+    background: $table-item-even-grag;
+}
+
+.table-box tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-box tbody tr:hover {
+    background: $table-line-bg-hover-color;
+    /*border-left: 2px solid $table-line-bg-commom-color;*/
+    /*border-right: 2px solid $table-line-bg-commom-color;*/
+}
+
+/*.table-box tbody tr.table-special-line {*/
+    /*background: $table-box-bg-color;*/
+/*}*/
+
+/*.table-box tbody tr.table-special-line:hover td {*/
+    /*background: $table-box-bg-color;*/
+    /*border-left: 2px solid $table-box-bg-color;*/
+    /*border-right: 2px solid $table-box-bg-color;*/
+/*}*/
+
+.light-height-lable {
+    color: $table-active-color;
+}
+
+.table-box th {
+    height: $th-height;
+    line-height: $th-height;
+    font-weight: normal;
+    color: $grey-a;
+    /*border-bottom: 1px solid $border-color-split-dark;*/
+}
+
+.table-box td {
+    height: $td-height;
+    line-height: $td-height;
+    color: $grey-b;
+}
+
+.table-box th,.table-box td {
+    text-align: center;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+}

@@ -1,0 +1,30 @@
+@import "../themes/default.css";
+
+/*divide line*/
+.divide-title-b {
+    border-bottom: 2px solid $border-color-title;
+}
+.divide-text-b {
+    border-bottom: 1px solid $border-color-title;
+}
+.border-bottom-blue {
+    border-bottom: 2px solid $blue;
+}
+.border-bottom-gray {
+    border-bottom: 2px solid $gray-board;
+}
+.border-input-blue {
+    border: 1px solid $blue;
+}
+.border-input-unedit {
+    border-bottom: 1px solid $border-color-input-light;
+}
+.border-popover {
+    border-bottom: 1px solid $gray-board;
+}
+.border-choose {
+    border-bottom: 1px solid $gray-choose-border;
+}
+.border-left-analysis {
+    border-left: 2px solid $border-color-gray;
+}

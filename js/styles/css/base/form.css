@@ -1,0 +1,73 @@
+@import "../themes/default.css";
+
+.ghost {
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+.circle {
+    border: 1px solid $grey-c;
+    border-radius: $radius20;
+    color: $grey-a;
+}
+
+.dashed {
+    background: none;
+    border-bottom: 1px dashed $grey-c;
+    color: $grey-a;
+}
+
+.active {
+    border: none;
+    border-radius: $radius5;
+    background: $form-item-bg;
+    box-shadow: $shadow-form-item;
+    padding: 0 10px;
+}
+
+.flat {
+    padding: 5px 25px 5px 10px;
+    background: $white;
+    border: 1px solid $grey-d;
+    border-radius: $radius5;
+    transition: 250ms ease-in-out border;
+}
+
+.flat:focus {
+    border: 1px solid $blue-e;
+}
+
+.solidBottom {
+    padding: 16px 25px;
+    border-bottom: 1px solid $border-color-input-light;
+    transition: 250ms ease-in-out all;
+}
+
+.solid {
+    padding: 10px 18px;
+    border-radius: $radius5;
+    border: 1px solid $grey-d;
+    transition: 250ms ease-in-out all;
+}
+
+.solidBottom:focus, .solid:focus {
+    border: none!important;
+    background: $white;
+    border-radius: $radius5;
+    box-shadow: $shadow-form-item;
+}
+
+.simple {
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+.simple:focus {
+    border: none!important;
+    background: $white;
+    border-radius: $radius5;
+    box-shadow: $shadow-form-item;
+}
+

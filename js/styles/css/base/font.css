@@ -1,0 +1,136 @@
+@import "../themes/default.css";
+
+/****text wrap****/
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.word-break {
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+}
+/****fontStyle****/
+.normal {
+    font-style: normal;
+}
+/****fontWeight****/
+.thin {
+    font-weight: normal;
+}
+.bold {
+    font-weight: bold;
+}
+/****fontSize*****/
+/*logo*/
+.logo {
+    font-size: $font28;
+    composes: thin;
+}
+/*author*/
+.userName{
+    font-size: $font16;
+}
+/*home*/
+.main-title {
+    font-size: $font18;
+}
+.tab-name {
+    font-size: $font16;
+}
+.table-title {
+    font-size: $font18;
+}
+/*nav*/
+.nav-middle {
+    font-size: $font16;
+}
+.toolbar-large {
+    font-size: $font18;
+}
+/*stepList*/
+.step-list-icon {
+    font-size: $font25;
+}
+.step-list-title {
+    font-size: $font16;
+}
+.step-list-item {
+    font-size: $font12;
+}
+/*mainTool*/
+.main-tool-title {
+    font-size: $font18;
+}
+.main-tool-text {
+    font-size: $font14;
+}
+.main-tool-exit {
+    font-size: $font18;
+}
+.main-tool-search {
+    font-size: $font16;
+}
+/*projectTit*/
+.project-bar-title {
+    font-size: $font18; 
+    color: $grey-a;
+}
+.project-bar-sub-title {
+    font-size: $font14;
+}
+/*mainContainer*/
+.tip-small {
+    font-size: $font14;
+}
+/*titleWithTags*/
+.tag-small {
+    font-size: $font14;
+}
+/*collection layer*/
+.layer-first-title {
+    font-size: 1.8rem;
+    color: $grey-a;
+}
+.layer-second-title {
+    font-size: 1.6rem;
+    color: $grey-b;
+    composes: bold;
+}
+.layer-switch {
+    color: $blue-a;
+}
+.layer-switch:hover {
+    text-decoration: underline;
+}
+.layer-link {
+    color: $blue-a;
+}
+.layer-no-link {
+    color: $grey-b;
+}
+/*********common*********/
+.common-title {
+    color: $grey-a;
+    font-size: $font16;
+}
+.common-title-sub {
+    color: $orange-a;
+    font-size: $font16;
+}
+.common-text-dark {
+    color: $grey-a;
+    font-size: $font16;
+}
+.common-text-light {
+    color: $gray-9;
+    font-size: $font16;
+}
+.common-link {
+    color: $grey-c;
+    cursor: pointer;
+}
+.common-link:hover {
+    color: $blue-a;
+}

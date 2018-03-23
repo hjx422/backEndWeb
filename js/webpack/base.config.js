@@ -81,13 +81,14 @@ module.exports = {
             static: path.resolve(baseDirName, 'static'),
             base: path.resolve(baseDirName, 'src/components/base'),
             utils: path.resolve(baseDirName, 'src/utils'),
-            css: path.resolve(baseDirName, 'styles/common/css'),
+            css: path.resolve(baseDirName, 'styles/css'),
             templateEditor: path.resolve(baseDirName, 'src/modules/templateEditor'),
             minderDemo: path.resolve(baseDirName, 'src/modules/minderDemo')
         },
         modulesDirectories: [
             'node_modules', 'common', 'img'
-        ]
+        ],
+        root: path.resolve(baseDirName, 'src')
     },
     module: {
         loaders: [

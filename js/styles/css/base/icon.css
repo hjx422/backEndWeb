@@ -1,0 +1,209 @@
+@import "../themes/default.css";
+
+/*******new*******/
+.sprite {
+    display: inline-block;
+    background: url($icon-url) no-repeat;
+    cursor: pointer;
+}
+.sprite-popup {
+    display: inline-block;
+    background: url($popup-icon-url) no-repeat;
+}
+
+.sprite-20 {
+    width: 20px;
+    height: 20px;
+    composes: sprite;
+}
+
+.sprite-30 {
+    width: 30px;
+    height: 30px;
+    composes: sprite;
+}
+
+/*logo icon*/
+.sprite-logo {
+    vertical-align: middle;
+}
+
+.sprite-logo-large {
+    width: 48px;
+    height: 52px;
+    composes: sprite-logo;
+    composes: sprite;
+    background-position: 0 0;
+}
+
+.sprite-logo-small {
+    width: 40px;
+    height: 44px;
+    composes: sprite-logo;
+    composes: sprite;
+    background-position: -48px 0;
+}
+
+.sprite-steplist-ing {
+    width: 25px;
+    height: 25px;
+    composes: sprite;
+    background-position: -33px 0;
+    cursor: pointer;
+}
+
+.sprite-steplist-finished {
+    width: 25px;
+    height: 25px;
+    composes: sprite;
+    background-position: 0 0;
+    cursor: pointer;
+}
+/*mainToolBarIcon*/
+.sprite-checklist {
+    width: 161px;
+    height: 48px;
+    composes: sprite;
+    background-position: 0 -169px;
+}
+.sprite-checklist-close {
+    width: 161px;
+    height: 48px;
+    composes: sprite;
+    background-position: 0 -44px;
+}
+/*formIcon*/
+.sprite-close {
+    composes: sprite-20;
+    background-position: 0 -813px;
+}
+.sprite-delete {
+    composes: sprite-20;
+    background-position: -1px -294px;
+}
+.sprite-file {
+    width: 18px;
+    height: 26px;
+    composes: sprite;
+    background-position: -25px -295px;
+}
+.sprite-add {
+    composes: sprite-20;
+    background-position: -40px -813px;
+}
+.sprite-add-active {
+    width: 26px;
+    height: 26px;
+    composes: sprite;
+    background-position: 0 -833px;
+}
+.sprite-upload {
+    composes: sprite-20;
+    background-position: -60px -813px;
+}
+.sprite-refresh {
+    composes: sprite-20;
+    background-position: -80px -813px;
+}
+.sprite-popup-warning {
+    width: 70px;
+    height: 70px;
+    composes: sprite-popup;
+    background-position: 0 0;
+}
+.sprite-popup-sad {
+    width: 87px;
+    height: 87px;
+    composes: sprite-popup;
+    background-position: 0 -79px;
+}
+.sprite-garbage {
+    width: 26px;
+    height: 26px;
+    composes: sprite;
+    background-position: -70px -833px;
+}
+.sprite-page {
+    width: 26px;
+    height: 26px;
+    composes: sprite;
+    background-position: -42px -449px;
+}
+.sprite-tips {
+    width: 28px;
+    height: 28px;
+    composes: sprite;
+    background-position: -80px -410px;
+}
+/*drag-icon*/
+.drag-icon{
+    width: 20px;
+    height: 20px;
+    composes: sprite;
+    background-position: -100px -813px;
+    cursor: move;
+}
+/*******icon font*******/
+@font-face {font-family: "iconfont";
+    src: url('../../fonts/iconfont.eot?t=1479699830393'); /* IE9*/
+    src: url('../../fonts/iconfont.eot?t=1479699830393#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../fonts/iconfont.woff?t=1479699830393') format('woff'), /* chrome, firefox */
+    url('../../fonts/iconfont.ttf?t=1479699830393') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../../fonts/iconfont.svg?t=1479699830393#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:24px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-refresh:before { content: "\3437"; }
+.icon-help:before { content: "\e61a"; }
+.icon-arrow-right:before { content: "\e61d"; }
+.icon-undo:before { content: "\e633"; }
+.icon-redo:before { content: "\e60f" }
+.icon-search:before { content: "\349a"; }
+.icon-cloud:before { content: "\e65a"; }
+.icon-computer:before { content: "\e67f"; }
+.icon-rotate:before { content: "\e75a";}
+.icon-tip:before { content: "\e657"; }
+.icon-look:before { content: "\e7b0"; }
+.icon-delete-circle:before { content: "\e619"; }
+.icon-tip-italic:before { content: "\e683"; }
+.icon-add:before { content: "\e62d"; }
+.icon-version-updating:before { content: "\e64d"; }
+.icon-data:before { content: "\e677"; }
+.icon-update:before { content: "\e693"; }
+.icon-edit:before { content: "\e602"; }
+.icon-add-white:before { content: "\e66b"; }
+.icon-arrow-double:before { content: "\e600"; }
+.icon-create-case:before { content: "\e632"; }
+.icon-base-module:before { content: "\e60a"; }
+.icon-preview:before { content: "\e852"; }
+.icon-export:before { content: "\e714"; }
+.icon-sort:before { content: "\e634"; }
+.icon-cancel:before { content: "\e656"; }
+.icon-save:before { content: "\e651"; }
+.icon-print:before { content: "\e64b"; }
+.icon-invalidate:before { content: "\e645"; }
+.icon-cross:before { content: "\e66c"; }
+.icon-verify:before { content: "\e609"; }
+.icon-create-new:before { content: "\e62b"; }
+.icon-bell:before { content: "\e604"; }
+.icon-copy:before { content: "\e601"; }
+.icon-garbage:before { content: "\e603"; }
+.icon-exit:before { content: "\e607"; }
+.icon-finished-circle:before { content: "\e608"; }
+.icon-checkbox-hover:before { content: "\e615"; }
+.icon-checkbox:before { content: "\e616"; }
+.icon-checkbox-finished:before { content: "\e618"; }
+.icon-not-start:before { content: "\e617"; }
+.icon-finished-solid:before { content: "\e61b"; }
+.icon-people:before { content: "\e636"; }
+.icon-lock:before { content: "\e6a1"; }
+.icon-powerOff:before { content: "\e624"; }
+.icon-calendar:before { content: "\e63d"; }

@@ -1,0 +1,40 @@
+@value global: "./global.css";
+@import "../themes/default.css";
+
+.tabbed {
+    composes: clearfix from global;
+}
+
+.tabbed-bg-primary {
+    background-color: $blue-f;
+}
+
+.tabbed-bg-grey {
+    background-color: $grey-f;
+}
+
+.tabbed li {
+    display: block;
+    float: left;
+    padding: 20px;
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+    color: $tab-color;
+    transition: all 250ms ease;
+    text-align: center;
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    border-bottom: 2px solid transparent;
+}
+
+.tabbed li:hover {
+    color: $tab-active-color;
+    border-bottom: 2px solid $tab-active-color;
+}
+
+.tabbed li.active {
+    color: $tab-active-color;
+    border-bottom: 2px solid $tab-active-color;
+}

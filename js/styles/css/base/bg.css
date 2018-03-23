@@ -1,0 +1,17 @@
+@import "../themes/default.css";
+
+/*body*/
+/*.bg-cover {*/
+    /*background: linear-gradient(to right, bg-cover-l, bg-cover-r);*/
+/*}*/
+
+/*form-item-layout*/
+/*.form-item-bg-color {*/
+    /*background: $layout-bg-color;*/
+/*}*/
+/*.form-item-bg-color:hover {*/
+    /*background: $hover-color;*/
+/*}*/
+/*.form-item-bg-color-active, .form-item-bg-color-active:hover {*/
+    /*background: $primary-color;*/
+/*}*/
